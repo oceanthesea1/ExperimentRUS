@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ExperimentRUS</string>
+    <string-array name="arrayOperator">
+        <item>Pilih</item>
+        <item>Tambah (+)</item>
+        <item>Kurang (-)</item>
+        <item>Kali   (*)</item>
+        <item>Bagi   (/)</item>
+    </string-array>
+</resources>
