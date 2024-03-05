@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,10 +17,11 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.HolderData> {
-    List<TemanKelas> listData;
+    List<siswa> listData;
     LayoutInflater inflater;
+    private ItemClickListener mClickListener;
 
-    public Adapter(Context context, List<TemanKelas> listData) {
+    public Adapter(Context context, List<siswa> listData) {
         this.listData = listData;
         this.inflater = LayoutInflater.from(context);
     }
@@ -33,21 +35,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderData> {
 
     @Override
     public void onBindViewHolder(@NonNull HolderData holder, int position) {
-        TemanKelas temanKelas = listData.get(position);
-        holder.textNama.setText(temanKelas.getNama());
-        holder.textKelas.setText(temanKelas.getKelas());
+        siswa siswa = listData.get(position);
+        holder.textNama.setText(siswa.getNama());
+        holder.textKelas.setText(siswa.getKelas());
 
         Glide.with(holder.itemView.getContext())
-                .load(temanKelas.getImage())
+                .load(siswa.getImage())
                 .into(holder.imageView);
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name = temanKelas.getNama();
-                Toast.makeText(holder.itemView.getContext(), name, Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     @Override
@@ -55,7 +49,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderData> {
         return listData.size();
     }
 
-    public class HolderData extends RecyclerView.ViewHolder{
+    public void setClickListener(ItemClickListener itemClickListener) {
+        this.mClickListener = itemClickListener;
+    }
+
+    public interface ItemClickListener {
+        void onItemClick(View view, int position);
+    }
+
+    public class HolderData extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView textNama;
         TextView textKelas;
         ImageView imageView;
@@ -65,6 +67,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderData> {
             textNama = itemView.findViewById(R.id.textNama);
             textKelas = itemView.findViewById(R.id.textKelas);
             imageView = itemView.findViewById(R.id.imageView);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (mClickListener != null) mClickListener.onItemClick(v, getAdapterPosition());
         }
     }
 }

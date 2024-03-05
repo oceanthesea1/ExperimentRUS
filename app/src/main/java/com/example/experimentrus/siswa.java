@@ -1,6 +1,6 @@
 package com.example.experimentrus;
 
-public class TemanKelas {
+public class siswa {
     private String nama;
     private String kelas;
     private String absen;

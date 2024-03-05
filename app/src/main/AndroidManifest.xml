@@ -15,6 +15,9 @@
         android:theme="@style/Theme.ExperimentRUS"
         tools:targetApi="31">
         <activity
+            android:name=".BottomMenu"
+            android:exported="true" />
+        <activity
             android:name=".ListSiswa10PPLG1"
             android:exported="true" />
         <activity
