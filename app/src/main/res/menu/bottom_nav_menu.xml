@@ -10,9 +10,15 @@
     <item
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Profile"
+        android:title="Messages"
+        android:icon="@drawable/baseline_message_24"
+        android:id="@+id/menu_messages" />
+    <item
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Me"
         android:icon="@drawable/baseline_person_24"
-        android:id="@+id/menu_profile" />
+        android:id="@+id/menu_me" />
     <item
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

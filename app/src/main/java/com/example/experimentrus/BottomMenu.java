@@ -28,7 +28,11 @@ public class BottomMenu extends AppCompatActivity {
 
                 replaceFragment(new HomeFragment());
 
-            } else if (itemId == R.id.menu_profile) {
+            } else if (itemId == R.id.menu_messages) {
+
+                replaceFragment(new MessagesFragment());
+
+            } else if (itemId == R.id.menu_me) {
 
                 replaceFragment(new ProfileFragment());
 
